@@ -1,3 +1,5 @@
+//slider на jqury
+
 $(document).ready(function () {
   let position = 0;
 
