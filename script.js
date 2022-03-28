@@ -1,4 +1,4 @@
-//slider на jqury
+//slider на jqury version
 
 $(document).ready(function () {
   let position = 0;
