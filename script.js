@@ -1,55 +1,42 @@
-//slider на jqury version
+//slider на JS version
 
-$(document).ready(function () {
-  let position = 0;
+let position = 0;
+const slideToShow = 4; //показываем слайдов
+const slideToScroll = 3; //прокручиваем слайдов
+const container = document.querySelector('.slider-container');
+const track = document.querySelector('.slider-track');
+// const item = document.querySelector('.slider-item');
+const btnPrev = document.querySelector('.btn-prev');
+const btnNext = document.querySelector('.btn-next');
+const items = document.querySelectorAll('.slider-item');
+const itemsCount = items.length;
+const itemWidth = container.clientWidth / slideToShow; //ширина элемента
+const movePosition = slideToScroll * itemWidth;
 
-  const slideToShow = 2; //показываем слайдов
-  const slideToScroll = 2; //прокручиваем слайдов
-  const container = $('.slider-container');
-  const track = $('.slider-track');
-  const item = $('.slider-item');
-  const btnPrev = $('.btn-prev');
-  const btnNext = $('.btn-next');
-  const itemsCount = item.length;
-  const itemWidth = container.width() / slideToShow; //ширина элемента
-  const movePosition = slideToScroll * itemWidth;
+items.forEach((item) => {
+  item.style.minWidth = `${itemWidth}px`;
+});
 
-  item.each(function (index, item) {
-    $(item).css({
-      minWidth: itemWidth,
-    });
-  });
-
-  btnNext.click(function () {
-    const itemsLeft = itemsCount - (Math.abs(position) + slideToShow * itemWidth) / itemWidth;
-
-    position -= itemsLeft >= slideToScroll ? movePosition : itemsLeft * itemWidth;
-
-    setPosition();
-    checkBtns();
-  });
-
-  btnPrev.click(function () {
-    const itemsLeft = Math.abs(position) / itemWidth;
-
-    position += itemsLeft >= slideToScroll ? movePosition : itemsLeft * itemWidth;
-
-    setPosition();
-    checkBtns();
-  });
-
-  const setPosition = () => {
-    track.css({
-      transform: `translateX(${position}px)`,
-    });
-  };
-
-  const checkBtns = () => {
-    btnPrev.prop('disabled', position === 0);
-    console.log(parseFloat(position.toFixed(3)));
-    console.log(-(itemsCount - slideToShow) * itemWidth);
-    btnPrev.prop('disabled', parseFloat(position.toFixed(3)) === 0);
-    btnNext.prop('disabled', position <= -(itemsCount - slideToShow) * itemWidth);
-  };
+btnNext.addEventListener('click', function () {
+  const itemsLeft = itemsCount - (Math.abs(position) + slideToShow * itemWidth) / itemWidth;
+  position -= itemsLeft >= slideToScroll ? movePosition : itemsLeft * itemWidth;
+  setPosition();
   checkBtns();
 });
+
+btnPrev.addEventListener('click', function () {
+  const itemsLeft = Math.abs(position) / itemWidth;
+  position += itemsLeft >= slideToScroll ? movePosition : itemsLeft * itemWidth;
+  setPosition();
+  checkBtns();
+});
+
+const setPosition = () => {
+  track.style.transform = `translateX(${position}px)`;
+};
+
+const checkBtns = () => {
+  btnPrev.disabled = position === 0;
+  btnNext.disabled = position <= -(itemsCount - slideToShow) * itemWidth;
+};
+checkBtns();
