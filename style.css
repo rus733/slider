@@ -12,7 +12,8 @@
 
 button {
   color: #000;
-  background-color: aquamarine;
+  font-size: 36px;
+
   padding: 1rem 3rem;
   cursor: pointer;
   border-radius: 1rem;
