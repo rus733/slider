@@ -1,0 +1,55 @@
+/* общие */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+.wrapper {
+  padding-top: 4rem;
+  width: 60rem;
+  margin: 0 auto;
+}
+
+button {
+  color: #000;
+  background-color: aquamarine;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+/* слайдер */
+
+.slider-container {
+  overflow: hidden;
+  background-color: pink;
+  margin-bottom: 2rem;
+}
+.slider-track {
+  display: flex;
+  background-color: yellow;
+  transition: 0.2s;
+}
+.slider-item {
+  /* min-width: 20rem; */
+  height: 10rem;
+  color: #000;
+  font-size: 72px;
+  text-align: center;
+}
+
+.slider-item:nth-child(3n + 1) {
+  background-color: red;
+}
+
+.slider-item:nth-child(3n + 2) {
+  background-color: green;
+}
+
+.slider-item:nth-child(3n + 3) {
+  background-color: blue;
+}
+
+.slider-buttons {
+  text-align: center;
+}
