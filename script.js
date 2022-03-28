@@ -1,11 +1,10 @@
 //slider на JS version
 
 let position = 0;
-const slideToShow = 4; //показываем слайдов
-const slideToScroll = 3; //прокручиваем слайдов
+const slideToShow = 3; //показываем слайдов
+const slideToScroll = 1; //прокручиваем слайдов
 const container = document.querySelector('.slider-container');
 const track = document.querySelector('.slider-track');
-// const item = document.querySelector('.slider-item');
 const btnPrev = document.querySelector('.btn-prev');
 const btnNext = document.querySelector('.btn-next');
 const items = document.querySelectorAll('.slider-item');
